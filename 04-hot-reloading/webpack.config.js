@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
-  devtools: 'cheap-module-eval-source-map',
+  devtool: 'cheap-module-eval-source-map',
   entry: [
     'webpack-hot-middleware/client',
     './index.js',
@@ -12,7 +12,7 @@ module.exports = {
     filename: 'bundle.js',
     publicPath: '/static/',
   },
-  pulugins: [
+  plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
   ],
