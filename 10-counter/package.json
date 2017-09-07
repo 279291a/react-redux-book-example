@@ -18,12 +18,13 @@
   "homepage": "https://github.com/279291a/react-redux-book-example#readme",
   "dependencies": {
     "babel-register": "^6.26.0",
-    "eslint": "^3.19.0",
+    "react": "^15.6.1",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
     "babel-preset-es2015": "^6.24.1",
+    "eslint": "^3.19.0",
     "eslint-config-airbnb": "^15.1.0",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "^5.1.1",
