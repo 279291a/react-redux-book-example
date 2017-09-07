@@ -1,4 +1,5 @@
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 
 function increment() {
   return { type: 'INCREMENT' };
@@ -38,7 +39,7 @@ function counter(state = 0, action) {
   }
 }
 
-const store = createStore(counter);
+const store = createStore(counter, applyMiddleware(thunk));
 
 let currentValue = store.getState();
 
@@ -50,6 +51,7 @@ const listener = () => {
 
 store.subscribe(listener);
 
-store.dispatch({ type: 'INCREMENT' });
-store.dispatch({ type: 'INCREMENT' });
-store.dispatch({ type: 'DECREMENT' });
+store.dispatch(increment());
+store.dispatch(incrementIfOdd());
+store.dispatch(incrementAsync());
+store.dispatch(decrement());
