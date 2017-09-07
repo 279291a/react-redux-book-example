@@ -14,7 +14,7 @@ export default class Counter extends React.Component {
   }
 
   incrementAsync() {
-    setTimeout(this.props.onIncrement, 100);
+    setTimeout(this.props.onIncrement, 1000);
   }
 
   render() {
