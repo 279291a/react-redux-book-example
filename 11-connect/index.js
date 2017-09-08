@@ -8,6 +8,7 @@ import Connect1 from './containers/Connect1';
 import Connect2 from './containers/Connect2';
 import Connect3 from './containers/Connect3';
 import Connect4 from './containers/Connect4';
+import Connect5 from './containers/Connect5';
 
 const store = createStore(counter, applyMiddleware(thunk));
 
@@ -31,6 +32,10 @@ ReactDOM.render(
         <li>
           connect()的前两个参数分别为函数和dispatch函数,第二个参数为空：
           <Connect4 />
+        </li>
+        <li>
+          装饰器写法
+          <Connect5 />
         </li>
       </ul>
     </div>
