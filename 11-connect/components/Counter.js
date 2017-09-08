@@ -21,8 +21,8 @@ export default class Counter extends React.Component {
     const { value, onDecrement, onIncrement } = this.props;
     return (
       <p>clicked:
-			{value}times
-			{'  '}
+        {value}times
+        {'  '}
         <button onClick={onIncrement}>+</button>
         {'  '}
         <button onClick={onDecrement}>-</button>
