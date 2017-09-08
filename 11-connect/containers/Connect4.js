@@ -7,21 +7,22 @@ function Counter({ counter, dispatch }) {
     <p>clicked:
       {counter}  times
       {'  '}
-      <button onClick={dispatch(onIncrement())}>+</button>
+      <button onClick={() => dispatch(onIncrement())}>+</button>
       {'  '}
-      <button onClick={dispatch(onDecrement())}>-</button>
+      <button onClick={() => dispatch(onDecrement())}>-</button>
       {'  '}
-      <button onClick={dispatch(incrementIfOdd())}>increment If Odd</button>
+      <button onClick={() => dispatch(incrementIfOdd())}>increment If Odd</button>
       {'  '}
-      <button onClick={dispatch(incrementAsync())}>increment async</button>
+      <button onClick={() => dispatch(incrementAsync())}>increment async</button>
     </p>
   );
 }
 
-Counter.proptypes = {
+Counter.propTypes = {
   counter: PropTypes.number.isRequired,
   dispatch: PropTypes.func.isRequired,
 };
+
 export default connect(
   state => ({ counter: state.counter }),
 )(Counter);
