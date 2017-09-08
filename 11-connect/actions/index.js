@@ -4,6 +4,7 @@ export const DECREMENT = 'DECREMENT';
 export const onIncrement = () => ({ type: INCREMENT });
 export const onDecrement = () => ({ type: DECREMENT });
 export const incrementIfOdd = (dispatch, getState) => {
+  console.log(getState);
   const { counter } = getState();
   if (counter % 2 === 0) {
     return;
