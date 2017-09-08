@@ -6,6 +6,7 @@ import thunk from 'redux-thunk';
 import counter from './reducers';
 import Connect1 from './containers/Connect1';
 import Connect2 from './containers/Connect2';
+import Connect3 from './containers/Connect3';
 
 const store = createStore(counter, applyMiddleware(thunk));
 
@@ -21,6 +22,10 @@ ReactDOM.render(
         <li>
           connect()的前两个参数分别为函数和dispatch函数：
           <Connect2 />
+        </li>
+        <li>
+          connect()的前两个参数分别为函数和dispatch函数,第二个参数返回值使用了redux的bindActionCreators：
+          <Connect3 />
         </li>
       </ul>
     </div>
