@@ -1,7 +1,7 @@
 import expect from 'expect';
-import * as actions from '../../actions';
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
+import * as actions from '../../actions';
 
 const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
