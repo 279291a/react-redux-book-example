@@ -7,10 +7,10 @@ import Counter from '../../components/Counter';
 // setup 函数用于被测试的组件、action 函数、组件中的四个按钮和p元素
 function setup(counter = 0) {
   const actions = {
-    increment: expect.createSpy(),
+    onIncrement: expect.createSpy(),
     incrementIfOdd: expect.createSpy(),
     incrementAsync: expect.createSpy(),
-    decrement: expect.createSpy(),
+    onDecrement: expect.createSpy(),
   };
   const component = shallow(
     <Counter counter={counter} {...actions} />,
@@ -28,19 +28,19 @@ describe('components', () => {
   describe('Counter', () => {
     it('should display counter', () => {
       const { p } = setup();
-      expect(p.text()).toMatch(/^clicked: 0 times/);
+      expect(p.text()).toMatch(/^clicked:0times/);
     });
 
     it('first button should increment', () => {
       const { buttons, actions } = setup();
       buttons.at(0).simulate('click');
-      expect(actions.increment).toHaveBeenCalled();
+      expect(actions.onIncrement).toHaveBeenCalled();
     });
 
     it('second button should decrement', () => {
       const { buttons, actions } = setup();
       buttons.at(1).simulate('click');
-      expect(actions.decrement).toHaveBeenCalled();
+      expect(actions.onDecrement).toHaveBeenCalled();
     });
 
     it('third button should call incrementIfOdd', () => {
