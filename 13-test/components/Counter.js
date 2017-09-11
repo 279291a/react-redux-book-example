@@ -1,9 +1,9 @@
 import React, { PropTypes } from 'react';
 
-export default function Counter({ value, onDecrement, onIncrement, undo, redo }) {
+export default function Counter({ counter, onDecrement, onIncrement, undo, redo }) {
   return (
     <p>clicked:
-      {value}times
+      {counter}times
       {'  '}
       <button onClick={onIncrement}>+</button>
       {'  '}
@@ -17,7 +17,7 @@ export default function Counter({ value, onDecrement, onIncrement, undo, redo })
 }
 
 Counter.propTypes = {
-  value: PropTypes.number.isRequired,
+  counter: PropTypes.number.isRequired,
   onIncrement: PropTypes.func.isRequired,
   onDecrement: PropTypes.func.isRequired,
   undo: PropTypes.func.isRequired,
