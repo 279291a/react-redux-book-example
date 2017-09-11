@@ -20,7 +20,7 @@ describe('actions', () => {
       const expectedActions = [{ type: actions.INCREMENT }];
       const store = mockStore({ counter: 1 });
       store.dispatch(actions.incrementIfOdd());
-      expect(store.getActions().toEqual(expectedActions));
+      expect(store.getActions()).toEqual(expectedActions);
     });
 
 
@@ -34,7 +34,7 @@ describe('actions', () => {
     it('incrementAsync 创建一个+ 的动作', (done) => {
       const expectedActions = [{ type: actions.INCREMENT }];
       const store = mockStore({ counter: 0 });
-      store.dispatch(actions.incrementAsync);
+      store.dispatch(actions.incrementAsync());
       setTimeout(() => {
         expect(store.getActions()).toEqual(expectedActions);
         done();
