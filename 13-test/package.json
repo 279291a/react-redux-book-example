@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "cross-env NODE_ENV=test mocha --recursive --compilers js:babel-register --require ./test/setup.js",
+    "test:watch": "npm test -- -- watch"
   },
   "repository": {
     "type": "git",
@@ -30,10 +32,12 @@
     "babel-register": "^6.3.13"
   },
   "dependencies": {
+    "cross-env": "^5.0.5",
     "enzyme": "^2.9.1",
     "expect": "^21.0.2",
     "express": "^4.15.4",
     "jsdom": "^11.2.0",
+    "mocha": "^3.5.2",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.6",
