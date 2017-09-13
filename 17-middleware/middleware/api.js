@@ -51,7 +51,7 @@ repoSchema.define({
   owner: userSchema,
 });
 
-const Schemas = {
+export const Schemas = {
   USER: userSchema,
   USER_ARRAY: arrayOf(userSchema),
   REPO: repoSchema,
