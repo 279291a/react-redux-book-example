@@ -9,7 +9,7 @@ import * as ActionCreators from '../actions';
 class Counter extends Component{//eslint-disable-line
 
   static propTypes={
-    value:PropTypes.number.isRequired,
+    counter:PropTypes.number.isRequired,
     onIncrement:PropTypes.func.isRequired,
     onDecrement:PropTypes.func.isRequired,
     incrementIfOdd:PropTypes.func.isRequired,
@@ -28,13 +28,11 @@ class Counter extends Component{//eslint-disable-line
         {'  '}
         <button onClick={incrementIfOdd}>increment If Odd</button>
         {'  '}
-        <button onClick={()=>incrementAsync}>increment async</button>
+        <button onClick={()=>incrementAsync()}>increment async</button>
       </p>
     );
   }
 }
 
 
-export default connect(
-  state => ({ counter: state.counter }),
-)(Counter);
+export default Counter;
