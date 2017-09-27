@@ -7,7 +7,7 @@ class Header extends Component {
     this.handleSave = this.handleSave.bind(this);
   }
   handleSave(text) {
-    if (text.length === 0) {
+    if (text.length !== 0) {
       this.props.addTodo(text);
     }
   }
