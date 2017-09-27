@@ -25,14 +25,14 @@ class MainSection extends Component {
     this.setState({ filter });
   }
 
-  renderToggleAll(completedCounter) {
+  renderToggleAll(completedCount) {
     const { todos, actions } = this.props;
     if (todos.length > 0) {
       return (
         <input
           className="toggle-all"
           type="checkbox"
-          checked={completedCounter === todos.length}
+          checked={completedCount === todos.length}
           onChange={actions.completeAll}
         />
       );
@@ -40,16 +40,15 @@ class MainSection extends Component {
     return null;
   }
 
-  renderFooter(completedCounter) {
+  renderFooter(completedCount) {
     const { todos } = this.props;
     const { filter } = this.state;
-    const activeCounter = todos.length - completedCounter;
-
+    const activeCount = todos.length - completedCount;
     if (todos.length) {
       return (
         <Footer
-          completedCounter={completedCounter}
-          activeCounter={activeCounter}
+          completedCount={completedCount}
+          activeCount={activeCount}
           filter={filter}
           onClearCompleted={this.handleClearCompleted}
           onShow={this.handleShow}
@@ -64,19 +63,19 @@ class MainSection extends Component {
     const { filter } = this.state;
 
     const filteredTodos = todos.filter(TODO_FILTERS[filter]);
-    const completedCounter = todos.reduce(
+    const completedCount = todos.reduce(
       (count, todo) => (todo.completed ? count + 1 : count),
       0);
 
     return (
       <section className="main">
-        {this.renderToggleAll(completedCounter)}
+        {this.renderToggleAll(completedCount)}
         <ul className="todo-list">
           {filteredTodos.map(todo =>
             <TodoItem key={todo.id} todo={todo} {...actions} />,
           )}
         </ul>
-        {this.renderFooter(completedCounter)}
+        {this.renderFooter(completedCount)}
       </section>
     );
   }
@@ -97,3 +96,5 @@ MainSection.propTypes = {
     editTodo: PropTypes.func.isRequired,
   }).isRequired,
 };
+
+export default MainSection;

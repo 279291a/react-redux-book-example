@@ -25,7 +25,7 @@ class TodoItem extends Component {
   }
 
   render() {
-    const { todo, completedTodo, deleteTodo } = this.props;
+    const { todo, completeTodo, deleteTodo } = this.props;
     const { editing } = this.state;
     let element;
     if (editing) {
@@ -43,12 +43,14 @@ class TodoItem extends Component {
             className="toggle"
             type="checkbox"
             checked={todo.completed}
-            onChange={() => this.completedTodo(todo.id)}
+            onChange={() => this.completeTodo(todo.id)}
           />
           <label onDoubleClick={this.handleDoubleClick}>
             {todo.text}
           </label>
-          <button className="destory" onClick={() => completedTodo(todo.id)} />
+          <button className="destory" onClick={() => deleteTodo(todo.id)} >
+            clear completed
+          </button>
         </div>
       );
     }
@@ -69,10 +71,10 @@ class TodoItem extends Component {
 
 TodoItem.propTypes = {
   todo: PropTypes.shape({
-    id: PropTypes.string,
+    id: PropTypes.number,
     text: PropTypes.string,
   }).isRequired,
-  completedTodo: PropTypes.func.isRequired,
+  completeTodo: PropTypes.func.isRequired,
   deleteTodo: PropTypes.func.isRequired,
   editTodo: PropTypes.func.isRequired,
 };

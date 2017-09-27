@@ -13,7 +13,7 @@ class TodoTextInput extends Component {
   }
 
   handleSubmit(e) {
-    const text = e.target.trim();
+    const text = e.target.value.trim();
     if (e.which === 13) {
       this.props.onSave(text);
       if (this.props.newTodo) {
@@ -62,6 +62,7 @@ TodoTextInput.propTypes = {
 };
 
 TodoTextInput.defaultProps = {
+  onSave: PropTypes.func.isRequired,
   text: '',
   placeholder: '',
   editing: false,
