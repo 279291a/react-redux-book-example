@@ -21,7 +21,7 @@ class TodoItem extends Component {
     } else {
       this.props.editTodo(id, text);
     }
-    this.setState({ editing: true });
+    this.setState({ editing: false });
   }
 
   render() {
@@ -34,6 +34,7 @@ class TodoItem extends Component {
           text={todo.text}
           editing={this.state.editing}
           onSave={text => this.handleSave(todo.id, text)}
+          newTodo={false}
         />
       );
     } else {
@@ -43,14 +44,12 @@ class TodoItem extends Component {
             className="toggle"
             type="checkbox"
             checked={todo.completed}
-            onChange={() => this.completeTodo(todo.id)}
+            onChange={() => completeTodo(todo.id)}
           />
           <label onDoubleClick={this.handleDoubleClick}>
             {todo.text}
           </label>
-          <button className="destory" onClick={() => deleteTodo(todo.id)} >
-            clear completed
-          </button>
+          <button className="destory" onClick={() => deleteTodo(todo.id)} />
         </div>
       );
     }
