@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import { bindActionCreattors } from 'redux';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Header from '../components/Header';
 import MainSection from '../components/MainSection';
@@ -9,7 +9,7 @@ function App({ todos, actions }) {
   return (
     <div>
       <Header addTodo={actions.addTodo} />
-      <MainSection todos={todos} actions={actions} />
+      <MainSection actions={actions} todos={todos} />
     </div>
   );
 }
@@ -38,7 +38,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreattors(TodoActions, dispatch),
+    actions: bindActionCreators(TodoActions, dispatch),
   };
 }
 
@@ -46,4 +46,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps,
 )(App);
-
