@@ -49,7 +49,7 @@ class TodoItem extends Component {
           <label onDoubleClick={this.handleDoubleClick}>
             {todo.text}
           </label>
-          <button className="destory" onClick={() => deleteTodo(todo.id)} />
+          <button className="destroy" onClick={() => deleteTodo(todo.id)} />
         </div>
       );
     }
