@@ -19,3 +19,8 @@ export const receivePosts = (reddit, json) => ({
   posts: json.data.children.map(child => child.data.title),
   receiveAt: Date.now(),
 });
+
+export const invalidateReddit = reddit => ({
+  type: INVALIDATE_REDDIT,
+  reddit,
+});
