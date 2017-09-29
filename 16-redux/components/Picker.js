@@ -5,8 +5,8 @@ export default function Picker({ value, handleChange }) {
     <div>
       <h3>{value}</h3>
       <select onChange={() => handleChange()}>
-        <option>reactJs</option>
-        <option>frontend</option>
+        <option value="reactjs">reactJs</option>
+        <option value="frontend">frontend</option>
       </select>
     </div>
   );
