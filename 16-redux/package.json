@@ -3,11 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "dependencies": {},
-  "devDependencies": {},
-  "scripts": {
-    "start": "node server.js"
-  },
   "dependencies": {
     "babel-polyfill": "^6.3.14",
     "isomorphic-fetch": "^2.1.1",
@@ -30,6 +25,9 @@
     "webpack": "^1.9.11",
     "webpack-dev-middleware": "^1.2.0",
     "webpack-hot-middleware": "^2.9.1"
+  },
+  "scripts": {
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
