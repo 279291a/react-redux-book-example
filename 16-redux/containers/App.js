@@ -17,20 +17,28 @@ class App extends Component {
     dispatch(fetchPostsIfNeeded(selectedReddit));
   }
 
-  componentWillReceiveProps() {
+  componentWillReceiveProps(nextProps) {
     console.log('执行componentWillReceiveProps');
+    if (nextProps.selectedReddit !== this.props.selectedReddit) {
+      const { dispatch, selectedReddit } = nextProps;
+      dispatch(fetchPostsIfNeeded(selectedReddit));
+    }
   }
 
-  onRefresh() {
+  onRefresh(e) {
     console.log('onrefresh');
+    e.preventDefault();
+    const { dispatch, selectedReddit } = this.props;
+    dispatch(invalidateReddit(selectedReddit));
+    dispatch(fetchPostsIfNeeded(selectedReddit));
   }
 
-  handleChange() {
-    console.log('handlechange');
+  handleChange(nextReddit) {
+    this.props.dispatch(selectReddit(nextReddit));
   }
 
   render() {
-    const { posts, selectedReddit, receiveAt } = this.props;
+    const { posts, selectedReddit, receiveAt, isFetching } = this.props;
 
     return (
       <div>
@@ -39,7 +47,7 @@ class App extends Component {
           last updated at {receiveAt}
           <button onClick={this.onRefresh}>刷新</button>
         </p>
-        <Posts posts={posts} />
+        {isFetching ? <h3>loading...</h3> : <Posts posts={posts} />}
       </div>
     );
   }
