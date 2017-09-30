@@ -18,7 +18,7 @@ const requestPosts = reddit => ({
 const receivePosts = (reddit, json) => ({
   type: RECEIVE_POSTS,
   reddit,
-  posts: json.data.children.map(child => child.data.title),
+  posts: json.data.children.map(child => child.data),
   receiveAt: Date.now(),
 });
 
@@ -35,8 +35,7 @@ const fetchPosts = reddit => (dispatch) => {
 };
 
 const shouldFetchPosts = (state, reddit) => {
-  console.log(state.postsByReddit);
-  const { posts } = state.postsByReddit[reddit];
+  const posts = state.postsByReddit[reddit];
   if (!posts) {
     return true;
   }
@@ -48,8 +47,8 @@ const shouldFetchPosts = (state, reddit) => {
   return posts.didInvalidate;
 };
 
-export const fetchPostsIfNeeded = reddit => (getState, dispatch) => {
-  if (shouldFetchPosts(getState, reddit)) {
+export const fetchPostsIfNeeded = reddit => (dispatch, getState) => {
+  if (shouldFetchPosts(getState(), reddit)) {
     return dispatch(fetchPosts(reddit));
   }
 
