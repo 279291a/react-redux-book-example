@@ -7,7 +7,7 @@ const initialState = {
   items: [],
 };
 
-const selectedReddit = (state = 'reatjs', action) => {
+const selectedReddit = (state = 'reactjs', action) => {
   switch (action.type) {
     case SELECT_REDDIT:
       return action.reddit;

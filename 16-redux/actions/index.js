@@ -35,6 +35,7 @@ const fetchPosts = reddit => (dispatch) => {
 };
 
 const shouldFetchPosts = (state, reddit) => {
+  console.log(state.postsByReddit);
   const { posts } = state.postsByReddit[reddit];
   if (!posts) {
     return true;

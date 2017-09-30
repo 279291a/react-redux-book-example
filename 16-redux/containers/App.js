@@ -71,4 +71,5 @@ function mapStateToProps(state) {
     receiveAt,
   };
 }
-export default App;
+
+export default connect(mapStateToProps)(App);
