@@ -1,6 +1,7 @@
-dist/*
-lib/*
-build/*
-coverage/*
-node_modules/*
-dll/*
+**/dist/**
+**/static/**
+**/build/**
+**/node_modules/**
+**/webpack*.js
+**/webpack/**
+**/api/**
