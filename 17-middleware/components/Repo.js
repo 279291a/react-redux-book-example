@@ -21,7 +21,7 @@ function Repo({ repo, owner }) {
   );
 }
 
-Repo.PropTypes = {
+Repo.propTypes = {
   repo: PropTypes.shape({
     name: PropTypes.string.isRequired,
     description: PropTypes.string,
