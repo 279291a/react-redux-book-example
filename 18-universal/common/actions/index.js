@@ -14,7 +14,7 @@ export const incrementIfOdd = () => (dispatch, getState) => {
   dispatch(increment());
 };
 
-export const incrementAsync = (delay = 100) => (dispatch) => {
+export const incrementAsync = (delay = 1000) => (dispatch) => {
   setTimeout(() => {
     dispatch(increment());
   }, delay);
