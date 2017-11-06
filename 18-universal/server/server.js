@@ -31,7 +31,7 @@ function renderFullPage(html, initialState) {
     <body>
       <div id="root">${html}</div>
       <script>
-        window.__INITIAL_STATE = ${JSON.stringify(initialState)}
+        window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}
       </script>
       <script src="/static/bundle.js"></script>
     </body>
