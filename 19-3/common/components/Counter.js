@@ -3,6 +3,11 @@ import React, { PropTypes } from 'react';
 export default function Counter({ increment, incrementAsync, decrement, incrementIfOdd, counter }) {
   return (
     <p>
+      <img
+        alt="counter"
+        src={require('./Counter.png')}
+        className={require('./Counter.css').counter}
+      />
       clicked {counter} times:
       {'  '}
       <button onClick={increment}>+</button>
