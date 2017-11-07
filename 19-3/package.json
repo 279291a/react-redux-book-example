@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server/index.js"
+    "start": "concurrently -k \"node server/dev-server.js\" \"node server/index.js\""
   },
   "author": "",
   "license": "ISC",
