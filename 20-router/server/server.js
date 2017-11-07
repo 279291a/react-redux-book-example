@@ -1,19 +1,25 @@
 import Express from 'express';
-import qs from 'qs';
+import path from 'path';
+import favicon from 'serve-favicon';
+import { match, RouterContext } from 'react-router';
+
 import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
+
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { Provider } from 'react-redux';
 import webpackConfig from '../webpack.config';
 
 import configureStore from '../common/store/configureStore';
-import App from '../common/containers/App';
-import { fetchCounter } from '../common/api/counter';
+import getRoutes from '../common/routes';
 
 const app = new Express();
 const port = 3002;
+
+app.use(Express.static(path.join(__dirname, '', 'static')));
+app.use(favicon(path.join(__dirname, '', 'static', 'favicon.ico')));
 
 const compiler = webpack(webpackConfig);
 app.use(webpackDevMiddleware(compiler, {
@@ -40,22 +46,28 @@ function renderFullPage(html, initialState) {
 }
 
 function handleRender(req, res) {
-  fetchCounter((apiResult) => {
-    console.log(req.query);
-    const params = qs.parse(req.query);
-    const counter = parseInt(params.counter, 10) || apiResult || 0;
+  const initialState = { counter: 0 };
+  const store = configureStore(initialState);
+  const routes = getRoutes();
 
-    const initialState = { counter };
-    const store = configureStore(initialState);
-
-    const html = renderToString(
-      <Provider store={store}>
-        <App />
-      </Provider>,
-    );
-
-    const finalState = store.getState();
-    res.send(renderFullPage(html, finalState));
+  match({ routes, location: req.url }, (err, redirect, renderProps) => {
+    if (redirect) {
+      res.redirect(redirect.pathname + redirect.search);
+    } else if (err) {
+      console.error('router error:', err.stack);
+      res.status(500);
+    } else if (renderProps) {
+      res.status(200);
+      const html = renderToString(
+        <Provider store={store}>
+          <RouterContext {...renderProps} />
+        </Provider>,
+      );
+      const finalState = store.getState();
+      res.send(renderFullPage(html, finalState));
+    } else {
+      res.status(404).send('not found');
+    }
   });
 }
 
