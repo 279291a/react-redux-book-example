@@ -1,5 +1,5 @@
 /*eslint-disable */
-var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools');
+var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
 
 var config = { assets: { images: { extensions: ['jpg'] } } };
 
