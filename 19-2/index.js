@@ -1,1 +1,1 @@
-document.write(`<img src ="${require('./icon.jpg')}" alt="icon">`);
+document.write(`<img src ="${require('./Counter.png')}" alt="icon">`);

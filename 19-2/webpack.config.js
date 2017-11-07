@@ -1,7 +1,7 @@
 /*eslint-disable */
 var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
 
-var config = { assets: { images: { extensions: ['jpg'] } } };
+var config = { assets: { images: { extensions: ['png'] } } };
 
 var webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(config);
 
@@ -15,7 +15,7 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.jpg$/, loader: 'url-loader?limit=10240'
+        test: /\.png$/, loader: 'url-loader?limit=10240'
       }
     ]
   },
