@@ -1,0 +1,5 @@
+{
+  "assets":{
+    "./icon.jpg": "/dist/icon.png"
+  }
+}
