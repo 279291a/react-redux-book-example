@@ -1,7 +1,9 @@
 var path = require('path');
 var webpack = require('webpack');
+var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools');
 
 module.exports = {
+  context: path.resolve(__dirname),
   devtool: 'cheap-eval-source-map',
   entry: [
     'webpack-hot-middleware/client?path=http://localhost:3001/__webpack_hmr',
@@ -10,11 +12,12 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: '/static/'
+    publicPath: 'http://localhost:3001/static/'
   },
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new WebpackIsomorphicToolsPlugin(require('./webpack-isomorphic-tool')).development()
   ],
   module: {
     loaders: [
