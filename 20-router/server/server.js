@@ -18,8 +18,8 @@ import getRoutes from '../common/routes';
 const app = new Express();
 const port = 3002;
 
-app.use(Express.static(path.join(__dirname, '', 'static')));
-app.use(favicon(path.join(__dirname, '', 'static', 'favicon.ico')));
+app.use(Express.static(path.join(__dirname, '..', 'static')));
+app.use(favicon(path.join(__dirname, '..', 'static', 'favicon.ico')));
 
 const compiler = webpack(webpackConfig);
 app.use(webpackDevMiddleware(compiler, {
