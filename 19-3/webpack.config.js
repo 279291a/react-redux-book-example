@@ -28,10 +28,10 @@ module.exports = {
         }
       },
       {
-        test:/\.png$/  ,loader:'url-loader?limit=10240'
+        test:/\.png$/,  loader:'url-loader?limit=10240'
       },
       {
-        test:/\.css$/  ,loader:'style-loader!css-loader?modules'
+        test:/\.css$/,loader:'style-loader!css-loader?modules'
       }
     ]
   }
