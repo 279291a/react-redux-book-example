@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
-import Counter from './components/Counter';
+import Counter from './containers/Counter';
 import Main from './containers/Main';
 import Home from './containers/Home';
 
