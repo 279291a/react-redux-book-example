@@ -1,6 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
-var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools');
+var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/Plugin');
 
 module.exports = {
   context: path.resolve(__dirname),

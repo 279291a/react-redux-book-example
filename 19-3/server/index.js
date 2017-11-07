@@ -6,6 +6,7 @@ var rootDir = path.resolve(__dirname,'..');
 
 var WebpackIsomorphicTools = require('webpack-isomorphic-tools');
 global.webpackIsomorphicTools = new WebpackIsomorphicTools(require('../webpack-isomorphic-tool'))
+  .development()
   .server(rootDir,function(){
     require('./server')
   })
