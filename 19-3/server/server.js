@@ -1,12 +1,9 @@
 import Express from 'express';
 import qs from 'qs';
-import webpack from 'webpack';
-import webpackDevMiddleware from 'webpack-dev-middleware';
-import webpackHotMiddleware from 'webpack-hot-middleware';
+
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { Provider } from 'react-redux';
-import webpackConfig from '../webpack.config';
 
 import configureStore from '../common/store/configureStore';
 import App from '../common/containers/App';
@@ -14,13 +11,6 @@ import { fetchCounter } from '../common/api/counter';
 
 const app = new Express();
 const port = 3002;
-
-const compiler = webpack(webpackConfig);
-app.use(webpackDevMiddleware(compiler, {
-  noInfo: true,
-  publicPath: webpackConfig.output.publicPath,
-}));
-app.use(webpackHotMiddleware(compiler));
 
 function renderFullPage(html, initialState) {
   return `
@@ -33,15 +23,15 @@ function renderFullPage(html, initialState) {
       <script>
         window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}
       </script>
-      <script src="/static/bundle.js"></script>
+      <script src="${webpackIsomorphicTools.assets().javascript.main}"></script>
     </body>
   </html>
   `;
 }
 
 function handleRender(req, res) {
+  webpackIsomorphicTools.refresh();
   fetchCounter((apiResult) => {
-    console.log(req.query);
     const params = qs.parse(req.query);
     const counter = parseInt(params.counter, 10) || apiResult || 0;
 
