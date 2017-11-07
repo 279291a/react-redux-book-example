@@ -1,6 +1,9 @@
 import React, { PropTypes } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as CounterActions from '../actions';
 
-export default function Counter({ increment, incrementAsync, decrement, incrementIfOdd, counter }) {
+function Counter({ increment, incrementAsync, decrement, incrementIfOdd, counter }) {
   return (
     <p>
       clicked {counter} times:
@@ -23,3 +26,15 @@ Counter.propTypes = {
   incrementAsync: PropTypes.func.isRequired,
   counter: PropTypes.number.isRequired,
 };
+
+function mapStateToProps(state) {
+  return {
+    counter: state.counter,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(CounterActions, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Counter);
