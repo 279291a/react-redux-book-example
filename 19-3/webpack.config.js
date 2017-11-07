@@ -4,7 +4,7 @@ var webpack = require('webpack');
 module.exports = {
   devtool: 'cheap-eval-source-map',
   entry: [
-    'webpack-hot-middleware/client',
+    'webpack-hot-middleware/client?path=http://localhost:3001/__webpack_hmr',
     './client/index.js'
   ],
   output: {
@@ -26,6 +26,12 @@ module.exports = {
         query: {
           presets: [ 'react-hmre' ]
         }
+      },
+      {
+        test:/\.png$/  ,loader:'url-loader?limit=10240'
+      },
+      {
+        test:/\.css$/  ,loader:'style-loader!css-loader?modules'
       }
     ]
   }
