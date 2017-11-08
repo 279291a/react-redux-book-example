@@ -20,12 +20,11 @@ class Counter extends Component {
 
   render() {
     const {
-      increment, incrementAsync, decrement, incrementIfOdd, counter
+      increment, incrementAsync, decrement, incrementIfOdd, state,load
     } = this.props;
 
     return (
-      <p>
-        clicked {counter} times:
+      <div>
         {'  '}
         <button onClick={increment}>+</button>
         {'  '}
@@ -39,7 +38,7 @@ class Counter extends Component {
         <br />
         程序当前的state:
       <pre>{JSON.stringify(state, null, 2)}</pre>
-      </p>
+      </div>
     )
   }
 }
