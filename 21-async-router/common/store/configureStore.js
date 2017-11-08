@@ -1,12 +1,17 @@
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
+import { asyncMiddleware } from 'redux-amrc';
 import rootReducer from '../reducers';
 
 export default function configureStore(initialState) {
   const store = createStore(
     rootReducer,
     initialState,
-    applyMiddleware(thunk),
+    compose(
+      applyMiddleware(thunk, asyncMiddleware),
+      typeof window === 'object' &&
+      typeof window.devToolsExtension !== 'undefined' ? window.devToolsExtension() : f => f,
+    ),
   );
 
   if (module.hot) {
