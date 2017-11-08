@@ -4,7 +4,7 @@ module.exports = function (app) {
       if (Math.random() < 0.33) {
         res.status(500).end();
       } else {
-        res.join({
+        res.json({
           value: getRandomInt(1, 100)
         })
       }
