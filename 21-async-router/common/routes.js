@@ -3,7 +3,7 @@ import { Route, IndexRoute } from 'react-router';
 import Counter from './containers/Counter';
 import Main from './containers/Main';
 import Home from './containers/Home';
-import { load } from '../common/actions';
+import { load } from './actions';
 
 export default (store) => {
   const preload = (nextState, replace, cb) => {
