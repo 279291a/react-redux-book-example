@@ -3,6 +3,8 @@ import {
   Navbar, Nav, NavItem, NavDropdown, MenuItem, ButtonToolbar, Button, ButtonGroup, Glyphicon,
 } from 'react-bootstrap';
 
+import css from './App.scss';
+
 export default class App extends React.Component {
   render() {
     return (
