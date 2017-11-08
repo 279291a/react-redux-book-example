@@ -28,6 +28,8 @@ app.use(webpackDevMiddleware(compiler, {
 }));
 app.use(webpackHotMiddleware(compiler));
 
+require('../common/api/counter')(app);
+
 function renderFullPage(html, initialState) {
   return `
   <!doctype html>
