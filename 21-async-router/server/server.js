@@ -46,9 +46,8 @@ function renderFullPage(html, initialState) {
 }
 
 function handleRender(req, res) {
-  const initialState = { counter: 0 };
-  const store = configureStore(initialState);
-  const routes = getRoutes();
+  const store = configureStore();
+  const routes = getRoutes(store);
 
   match({ routes, location: req.url }, (err, redirect, renderProps) => {
     if (redirect) {
