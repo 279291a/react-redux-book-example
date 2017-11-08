@@ -16,7 +16,7 @@ module.exports = {
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
-      __SERVER__:true
+      __SERVER__: false
     })
   ],
   module: {
@@ -32,4 +32,4 @@ module.exports = {
       }
     ]
   }
-}
+};
