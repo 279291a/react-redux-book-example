@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "watch-client":"node webpack/webpack-dev-server"
+    "watch-client":"node webpack/webpack-dev-server",
+    "start-prod": "cross-env NODE_ENV=production node bin/server",
+    "start-dev": "nodemon --watch src bin/server.js"
   },
   "repository": {
     "type": "git",
