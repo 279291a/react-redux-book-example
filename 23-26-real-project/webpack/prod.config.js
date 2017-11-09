@@ -24,6 +24,52 @@ module.exports = {
   progress: true,
   plugins: [
     new ExtractTextPlugin('[name]-[chunkhash].css', { allChunks: true }),
-    new webpack.optimize
-  ]
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      compress:{
+        warnings:false
+      }
+    }),
+    new webpack.DefinePlugin({
+      'process.env':{
+        NODE_ENV:'"production"'
+      },
+      __SERVER__:false
+    }),
+    new WebpackIsomorphicToolsPlugin(require('./webpack-isomorphic-tools'))
+  ],
+  module:{
+    loaders:[
+      {test: /\.(jpeg|jpg|png|gif)$/,loader:'url-loader?limit=10240'},
+      {
+        test:/\.css$/,
+        loader: ExtractTextPlugin.extract(
+          'style',
+          'css?module&importLoaders=1&localIdentName=[name]__[local]__[hash:base64:5]'
+            +
+          '!postcss'
+        )
+      },
+      {
+        test:/\.scss$/,
+        loader:ExtractTextPlugin.extract(
+          'style',
+          'style',
+          'css?module&importLoaders=1&localIdentName=[name]__[local]__[hash:base64:5]'
+            +
+          '!postcss'+
+          '!sass'
+        )
+      },
+      {
+        test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: "url?limit=10000"
+      },
+      {
+        test: /\.(ttf|eot|svg)(\?[\s\S]+)?$/,
+        loader: 'file'
+      }
+    ]
+  },
+  postcss:[autofixer({browsers:['last 2 versions']})]
 }
