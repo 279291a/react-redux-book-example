@@ -6,7 +6,9 @@
   "scripts": {
     "watch-client":"node webpack/webpack-dev-server",
     "start-prod": "cross-env NODE_ENV=production node bin/server",
-    "start-dev": "nodemon --watch src bin/server.js"
+    "start-dev": "nodemon --watch src bin/server.js",
+    "start-api-dev": "nodemon --watch src/api bin/api.js",
+    "start-api-prod": "cross-env NODE_ENV=production node bin/api"
   },
   "repository": {
     "type": "git",
