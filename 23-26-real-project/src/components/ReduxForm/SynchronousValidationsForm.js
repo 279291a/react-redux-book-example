@@ -46,7 +46,7 @@ const SyncValidationForm = (props) => {
       <Field name="email" type="email" component={renderField} label="Email" />
       <Field name="age" type="number" component={renderField} label="Age" />
       <ButtonToolbar>
-        <Button bsStyle="primary" type="submit" disabled={submitting}>
+        <Button bsStyle="primary" type="submit" disabled={submitting} onClick={handleSubmit}>
           {submitting ? <i /> : <i />} submit
         </Button>
         <Button type="button" disabled={pristine || submitting} onClick={reset}>
