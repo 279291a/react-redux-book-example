@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import {
@@ -77,7 +78,14 @@ const SimpleForm = (props) => {
           bsStyle={renderCheckBox}
           disabled={pristine || submitting}
         >
-          submit
+          {submitting ? <i /> : <i />}submit
+        </Button>
+
+        <Button
+          disabled={pristine || submitting}
+          onClick={reset}
+        >
+          {reset}
         </Button>
       </ButtonToolbar>
     </form>
