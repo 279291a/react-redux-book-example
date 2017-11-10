@@ -22,7 +22,7 @@ export const incrementIfOdd = () => (dispatch, getState) => {
 };
 
 export const incrementAsync = (delay = 100) => (dispatch) => {
-  setTimeout(function () {
+  setTimeout(() => {
     dispatch(increment());
   }, delay);
 };
