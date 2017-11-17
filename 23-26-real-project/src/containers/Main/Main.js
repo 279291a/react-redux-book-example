@@ -28,7 +28,7 @@ class Main extends Component {
   render() {
     require('./Main.scss');
     const user = this.props.user;
-    render(
+    return (
       <div>
         <Helmet {...config.app.head} />
         <Navbar inverse>
@@ -80,14 +80,12 @@ class Main extends Component {
           </Navbar.Collapse>
         </Navbar>
 
-        <Spin/>
+        <Spin />
 
         <div>
-          {/**
-           * this will render the child nodes
-           */}
-           {React.cloneElement(this.props.children,this.props)}
-        </div>
+        {/* this will render the child routes */}
+        aaaaaaaaaaaaay
+      </div>
       </div>
     )
   }
