@@ -1,11 +1,11 @@
-import React,{Component,PropTypes} from 'react';
-import {connect} from 'react-redux';
-import {Button} from 'react-bootstrap';
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { Button } from 'react-bootstrap';
 import Helmet from 'react-helmet';
 import serialize from 'serialize-javascript';
 import * as actionCrators from '../../actions/counter';
 
-export class Counter extends Component{
+export class Counter extends Component {
   static propTypes = {
     increment: PropTypes.func.isRequired,
     incrementIfOdd: PropTypes.func.isRequired,
@@ -19,12 +19,12 @@ export class Counter extends Component{
   render() {
     const {
       increment, decrement, incrementIfOdd, incrementAsync,
-      counter, counterLoadState, loadCounter
+      counter, counterLoadState, loadCounter,
     } = this.props;
     const styles = require('./Counter.scss');
     return (
       <div className="container">
-        <Helmet title="计数器"/>
+        <Helmet title="计数器" />
         <div className={styles.counterPage}>
           <img
             alt="Counter"
@@ -46,10 +46,10 @@ export class Counter extends Component{
           >
             load
           </Button>
-          <br/><br/>
+          <br /><br />
           counter的值：
           <pre>{serialize(counter, { space: 2 })}</pre>
-          <br/><br/>
+          <br /><br />
           counter的加载状态:
           <pre>{serialize(counterLoadState, { space: 2 })}</pre>
         </div>
@@ -61,7 +61,7 @@ export class Counter extends Component{
 export default connect(
   state => ({
     counter: state.async.counter,
-    counterLoadState: state.async.loadState && state.async.loadState.counter
+    counterLoadState: state.async.loadState && state.async.loadState.counter,
   }),
   actionCrators
 )(Counter);
