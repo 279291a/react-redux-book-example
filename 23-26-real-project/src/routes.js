@@ -5,7 +5,7 @@ import { loadCounter } from './actions/counter';
 import { loadStatistic } from './actions/statistic';
 import { loadAuthIfNeeded } from './actions/auth';
 
-cosnt preload = promise => (nextState, replace, cb) => {
+const preload = promise => (nextState, replace, cb) => {
   if (__SERVER__ || nextState.location.action === 'PUSH') {
     promise().then(() => cb());
   } else {
@@ -20,10 +20,10 @@ export default store => {
   const requireLogin = (nextState, replace, cb) => {
     const user = store.getState().async.user;
     if (!user) {
-      replace("/");
+      replace('/');
     }
     cb();
-  }
+  };
 
   return (
     <Route path="/" component={Main} onEnter={preload(authPromise)}>
@@ -33,8 +33,8 @@ export default store => {
         <Route path="forms" component={Forms} />
         <Route path="statistics" component={Statistic} onEnter={preload(statisticPromise)} />
       </Route>
-      <Route path="login" component={Login}/>
+      <Route path="login" component={Login} />
       <Route path="*" component={NotFound} status={404} />
     </Route>
-  )
-}
+  );
+};
