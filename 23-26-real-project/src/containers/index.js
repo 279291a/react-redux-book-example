@@ -1,19 +1,7 @@
-import Counter from './Counter/Counter';
-import Form from './Forms/Form';
-import Login from './Login/Login';
-import Home from './Home/Home';
-import NotFound from './NotFound/NotFound';
-import Statistic from './Statistic/Statistic';
-import Main from './Main/Main';
-import Spin from './Spin/Spin';
-
-export default {
-  Counter,
-  Form,
-  Login,
-  Main,
-  Spin,
-  Home,
-  NotFound,
-  Statistic,
-};
+export Main from './Main/Main';
+export Home from './Home/Home';
+export NotFound from './NotFound/NotFound';
+export Counter from './Counter/Counter';
+export Forms from './Forms/Form';
+export Statistic from './Statistic/Statistic';
+export Login from './Login/Login';

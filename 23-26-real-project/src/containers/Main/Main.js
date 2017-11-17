@@ -61,7 +61,7 @@ class Main extends Component {
                 </LinkContainer>
               )}
 
-              <Nav navbar pullright>
+              <Nav navbar pullRight>
                 {!user && (
                   <LinkContainer to="/login">
                     <NavItem eventKey={4}>登录</NavItem>
@@ -84,7 +84,7 @@ class Main extends Component {
 
         <div>
         {/* this will render the child routes */}
-        aaaaaaaaaaaaay
+        {React.cloneElement(this.props.children)}
       </div>
       </div>
     )
