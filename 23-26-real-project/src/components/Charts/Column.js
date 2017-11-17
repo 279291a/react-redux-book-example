@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react';
 import ReactHighCharts from 'react-highcharts';
-import default from './Line';
 
 function Column(props) {
   if (!props.statistic) return <p>数据异常</p>;

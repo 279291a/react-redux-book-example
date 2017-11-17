@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import default from '../ReduxForm/SimpleForm';
 
 function Spin(props) {
   const styles = require('./Spin.scss');
@@ -19,5 +18,5 @@ Spin.propTypes = {
 };
 
 export default connect(
-  state => ({loadingNumber: state.async.loadingNumber || 0})
+  state => ({ loadingNumber: state.async.loadingNumber || 0 })
 )(Spin);

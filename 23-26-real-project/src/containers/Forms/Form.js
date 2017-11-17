@@ -4,7 +4,7 @@ import { Grid, Row, Col } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import serialize from 'serialize-javascript';
 import * as ActionCreators from '../../actions/form';
-import { SimpleForm, SynchronousValidattionForm, AsynchronousBlurValidationForm } from '../../components/ReduxForm';
+import { SimpleForm, SynchronousValidattionForm, AsynchronousBlurValidationForm } from '../../components/'
 
 @connect(
   state => ({
@@ -22,7 +22,7 @@ class Forms extends Component {
   };
 
   render() {
-    const styles = require('./Forms/scss');
+    const styles = require('./Form.scss');
     const { form, formState, post } = this.props;
 
     return (

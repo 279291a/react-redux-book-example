@@ -21,7 +21,7 @@ export class Counter extends Component{
       increment, decrement, incrementIfOdd, incrementAsync,
       counter, counterLoadState, loadCounter
     } = this.props;
-    const styles = require('./Counter.css');
+    const styles = require('./Counter.scss');
     return (
       <div className="container">
         <Helmet title="计数器"/>
