@@ -6,21 +6,35 @@ import { loadStatistic } from './actions/statistic';
 import { loadAuthIfNeeded } from './actions/auth';
 
 cosnt preload = promise => (nextState, replace, cb) => {
-  if(__SERVER__ || nextState.location.action === 'PUSH'){
+  if (__SERVER__ || nextState.location.action === 'PUSH') {
     promise().then(() => cb());
-  }else{
+  } else {
     cb();
   }
 };
 
 export default store => {
   const counterPromise = () => store.dispatch(loadCounter());
+  const statisticPromise = () => store.dispatch(loadStatistic());
+  const authPromise = () => store.dispatch(loadAuthIfNeeded());
+  const requireLogin = (nextState, replace, cb) => {
+    const user = store.getState().async.user;
+    if (!user) {
+      replace("/");
+    }
+    cb();
+  }
 
-  return(
-    <Route path="/" component={Main}>
-      <IndexRoute component={Home}/>
-      <Route path="counte" component={Counter} onEnter={preload(counterPromise)}/>
-      <Route path="*" component={NotFound} status={404}/>
+  return (
+    <Route path="/" component={Main} onEnter={preload(authPromise)}>
+      <IndexRoute component={Home} />
+      <Route>
+        <Route path="counter" component={Counter} onEnter={preload(counterPromise)} />
+        <Route path="forms" component={Forms} />
+        <Route path="statistics" component={Statistic} onEnter={preload(statisticPromise)} />
+      </Route>
+      <Route path="login" component={Login}/>
+      <Route path="*" component={NotFound} status={404} />
     </Route>
   )
 }
