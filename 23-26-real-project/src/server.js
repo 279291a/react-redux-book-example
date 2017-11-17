@@ -38,8 +38,8 @@ app.use((req, res) => {
 
   function hydrateOnClient() {
     res.send(
-      '<!doctype html>\n' +
-      renderToString(<Html assets={webpackIsomorphicTools.assets()} store={store} />));
+      `<!doctype html>\n
+      ${renderToString(<Html assets={webpackIsomorphicTools.assets()} store={store} />)}`);
   }
 
   if (__DISABLE_SSR__) {
@@ -61,9 +61,9 @@ app.use((req, res) => {
           <RouterContext {...renderProps} />
         </Provider>
       );
-      res.send('<!doctype html>\n' + renderToString(
+      res.send(`<!doctype html>\n${renderToString(
         <Html assets={webpackIsomorphicTools.assets()} component={component} store={store} />
-      ));
+      )}`);
     } else {
       res.statu(404).send('not found');
     }
@@ -77,4 +77,4 @@ app.listen(port, (error) => {
     console.info('==> Open http://%s:%s in a browser to view the app.', config.host, port);
   }
 })
-;
+  ;
