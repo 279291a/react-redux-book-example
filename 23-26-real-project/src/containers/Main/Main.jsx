@@ -1,21 +1,36 @@
 import React, { Component, PropTypes } from 'react';
-import { IndexLink } from 'react-router';
-import { Navbar, Nav, NavItem } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { IndexLink, browserHistory } from 'react-router';
+import { Navbar, Nav, NavItem, NavDropdown, MenuItem, NavbarBrand } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import Helmet from 'react-helmet';
 import { Spin } from '../../components';
 import config from '../../config';
+import { logout } from '../../actions/auth';
 
-class Main extends Component{
+@connect(
+  state => ({ user: state.async.user }),
+  { logout }
+)
+
+class Main extends Component {
   static propTypes = {
-    children: PropTypes.any.isRequired
+    children: PropTypes.any.isRequired,
+    user: PropTypes.any,
+    logout: PropTypes.func.isRequired
   };
 
-  render(){
-    require('./Main.css');
-    return (
+  handleLogout = (event) => {
+    event.preventDefault();
+    this.props.logout().then(() => browserHistory.push("/"));
+  }
+
+  render() {
+    require('./Main.scss');
+    const user = this.props.user;
+    render(
       <div>
-        <Helmet {...config.app.head}/>
+        <Helmet {...config.app.head} />
         <Navbar inverse>
           <Navbar.Header>
             <Navbar.Brand>
@@ -23,14 +38,44 @@ class Main extends Component{
                 <span>{config.app.title}</span>
               </IndexLink>
             </Navbar.Brand>
-            <Navbar.Toggle/>
+            <Navbar.Toggle />
           </Navbar.Header>
 
           <Navbar.Collapse>
             <Nav navbar>
-              <LinkContainer to="/counter">
-                <NavItem eventKey={1}>计数器</NavItem>
-              </LinkContainer>
+              {user && (
+                <LinkContainer to='/counter'>
+                  <NavItem eventKey={1}>计数器</NavItem>
+                </LinkContainer>
+              )}
+
+              {user && (
+                <LinkContainer to='/form'>
+                  <NavItem eventKey={2}>表单</NavItem>
+                </LinkContainer>
+              )}
+
+              {user && (
+                <LinkContainer to="/statistic">
+                  <NavItem eventKey={3}>统计</NavItem>
+                </LinkContainer>
+              )}
+
+              <Nav navbar pullright>
+                {!user && (
+                  <LinkContainer to="/login">
+                    <NavItem eventKey={4}>登录</NavItem>
+                  </LinkContainer>
+                )}
+
+                {user && (
+                  <NavDropdown eventKey={5} title={user.name} id="usernameDropdown">
+                    <LinkContainer to="/logout">
+                      <MenuItem eventKey={5.1} onClick={this.handleLogout}>登出</MenuItem>
+                    </LinkContainer>
+                  </NavDropdown>
+                )}
+              </Nav>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
@@ -38,10 +83,13 @@ class Main extends Component{
         <Spin/>
 
         <div>
-          {React.cloneElement(this.props.children,this.props)}
+          {/**
+           * this will render the child nodes
+           */}
+           {React.cloneElement(this.props.children,this.props)}
         </div>
       </div>
-    );
+    )
   }
 }
 
