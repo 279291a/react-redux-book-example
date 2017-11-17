@@ -1,6 +1,6 @@
 {
   "javascript": {
-    "main": "http://localhost:3001/dist/main-a8d041e5e21aeaf1957f.js"
+    "main": "http://localhost:3001/dist/main-ac67025711ad07b00214.js"
   },
   "styles": {},
   "assets": {
@@ -27,10 +27,6 @@
     },
     "./src/containers/Main/Main.scss": {
       "_style": ".navbar {\n  margin-bottom: 0;\n  border-radius: 0; }\n"
-    },
-    "./src/containers/Spin/Spin.scss": {
-      "spin": "Spin__spin__3MnqE",
-      "_style": ".Spin__spin__3MnqE {\n  position: fixed;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  color: #9d9d9d;\n  z-index: 999; }\n"
     },
     "./src/containers/Statistic/Statistic.scss": {
       "statistic": "Statistic__statistic__2xULc",

@@ -14,7 +14,7 @@ function Spin(props) {
 }
 
 Spin.propTypes = {
-  loadingNumber: PropTypes.number.isRequires,
+  loadingNumber: PropTypes.number.isRequired,
 };
 
 export default connect(
