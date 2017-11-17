@@ -8,7 +8,7 @@ import getRoutes from './routes';
 
 const initialState = window.__INITIAL_STATE__;
 const store = configureStore(initialState);
-const root = document.getElementById('root');
+const root = document.getElementById('app');
 const history = browserHistory;
 const routes = getRoutes(store);
 
