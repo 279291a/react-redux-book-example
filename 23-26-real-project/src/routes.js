@@ -28,7 +28,7 @@ export default store => {
   return (
     <Route path="/" component={Main} onEnter={preload(authPromise)}>
       <IndexRoute component={Home} />
-      <Route>
+      <Route onEnter={requireLogin}>
         <Route path="counter" component={Counter} onEnter={preload(counterPromise)} />
         <Route path="forms" component={Forms} />
         <Route path="statistics" component={Statistic} onEnter={preload(statisticPromise)} />
