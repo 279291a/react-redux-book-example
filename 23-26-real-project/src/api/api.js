@@ -5,6 +5,7 @@ import config from '../config';
 import controllers from './controllers';
 const port = config.apiPort;
 const app = new Express();
+const console = global.console;
 
 app.use(bodyParser.json());
 

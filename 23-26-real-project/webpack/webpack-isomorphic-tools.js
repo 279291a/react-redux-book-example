@@ -1,4 +1,4 @@
-var WebpackIsomorphicToolsPlugin = require('weback-isomorphic-tools/plugin');
+var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
 
 var config = {
   assets: {

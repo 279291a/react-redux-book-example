@@ -4,7 +4,7 @@ function getRandomInt(min, max) {
 
 export default app => {
   app.get('./counter', (req, res) => {
-    setTimeout(function () {
+    setTimeout(() => {
       if (Math.random() < 0.33) {
         res.status(500).end();
       } else {

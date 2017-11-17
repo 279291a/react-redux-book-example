@@ -14,7 +14,7 @@ import config from './config';
 
 const app = new Express();
 const port = config.port;
-const targetUrl = 'http://' + config.apiHost + ':' + config.apiPort;
+const targetUrl = `http://${config.apiHost}:${config.apiPort}`;
 const proxy = httpProxy.createProxyServer({
   target: targetUrl,
 });

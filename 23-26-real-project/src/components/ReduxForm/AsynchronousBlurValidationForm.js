@@ -19,7 +19,7 @@ const validate = values => {
 
 const asyncValidate = (values/* , dispatch*/) =>
   new Promise((resolve, reject) => {
-    setTimeout(function () {
+    setTimeout(() => {
       if (['john', 'paul'].includes(values.username)) {
         reject({ username: 'That username is token' });
       } else {

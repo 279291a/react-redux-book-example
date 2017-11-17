@@ -3,7 +3,7 @@ import Griddle from 'griddle-react';
 import CustomPagerComponent from './CustomPagerComponent';
 require('./Table.scss');
 
-const customComponent = props => (<div>{props.data + '℃'}</div>);
+const customComponent = props => (<div>{`${props.data}℃`}</div>);
 
 customComponent.propTypes = {
   data: PropTypes.number.isRequired,
