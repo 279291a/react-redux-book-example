@@ -21,7 +21,7 @@ export const incrementIfOdd = () => (dispatch, getState) => {
   dispatch(increment());
 };
 
-export const incrementAsync = (delay = 100) => (dispatch) => {
+export const incrementAsync = (delay = 1000) => (dispatch) => {
   setTimeout(() => {
     dispatch(increment());
   }, delay);
@@ -30,6 +30,6 @@ export const incrementAsync = (delay = 100) => (dispatch) => {
 export const loadCounter = () => ({
   [ASYNC]: {
     key: 'counter',
-    promise: () => customFetch('./counter'),
+    promise: () => customFetch('/counter'),
   },
 });
