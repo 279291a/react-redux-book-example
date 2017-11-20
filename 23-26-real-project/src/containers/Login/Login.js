@@ -11,7 +11,7 @@ import * as authActions from '../../actions/auth';
 export default class Login extends Component {
   static propTypes = {
     user: PropTypes.any,
-    login: PropTypes.fuc,
+    login: PropTypes.func,
     logout: PropTypes.func
   };
 
@@ -22,20 +22,20 @@ export default class Login extends Component {
     input.value = '';
   };
 
-  render(){
-    const {user,logout} = this.props;
+  render() {
+    const { user, logout } = this.props;
     const styles = require('./Login.scss');
 
-    return(
-      <div className={style.loginPage+' container'}>
-        <Helmet title="登录"/>
+    return (
+      <div className={styles.loginPage + ' container'}>
+        <Helmet title="登录" />
         <h1>登录</h1>
         {!user &&
           <div>
             <form className="login-form form-inline" onSubmit={this.handleSubmit}>
               <div className="form-group">
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   ref="username"
                   placeholder="请输入用户名"
                   className="form-control"
