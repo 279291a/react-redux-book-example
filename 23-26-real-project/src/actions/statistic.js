@@ -1,7 +1,7 @@
 import { ASYNC } from 'redux-amrc';
 import { customFetch } from '../utils/utils';
 
-export default function loadStatics() {
+export function loadStatistic() {
   return {
     [ASYNC]: {
       key: 'statistic',

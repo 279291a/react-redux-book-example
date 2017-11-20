@@ -10,7 +10,7 @@ customComponent.propTypes = {
 };
 
 function Table(props) {
-  if (!props.statistics) return <p>数据异常</p>;
+  if (!props.statistic) return <p>数据异常</p>;
 
   const columnMetadata = [
     {
@@ -37,10 +37,9 @@ function Table(props) {
   return (
     <Griddle
       tableClassName="table table-striped"
-      useGridStyles={false}
-      results={props.statistics.table}
+      useGriddleStyles={false}
+      results={props.statistic.table}
       columnMetadata={columnMetadata}
-      useCustomePagerComponent
       customPagerComponent={CustomPagerComponent}
       resultsPerPage={5}
     />
@@ -48,7 +47,7 @@ function Table(props) {
 }
 
 Table.propTypes = {
-  statistics: PropTypes.any,
+  statistic: PropTypes.any,
 };
 
 export default Table;
