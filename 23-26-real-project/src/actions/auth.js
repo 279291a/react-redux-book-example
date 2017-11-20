@@ -11,7 +11,7 @@ export function loadAuth() {
   return {
     [ASYNC]: {
       key: 'user',
-      promise: () => customFetch('./loadAuth'),
+      promise: () => customFetch('/loadAuth'),
     },
   };
 }
@@ -26,12 +26,12 @@ export function loadAuthIfNeeded() {
 }
 
 export function login(name) {
-  const url = './login';
+  const url = '/login';
   const option = {
     method: 'post',
     headers: {
       Accept: 'application/json',
-      'Content-type': 'application/json',
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify({
       name,
@@ -50,7 +50,7 @@ export function logout() {
   return {
     [ASYNC]: {
       key: 'user',
-      promise: () => customFetch('./logout'),
+      promise: () => customFetch('/logout'),
     },
   };
 }

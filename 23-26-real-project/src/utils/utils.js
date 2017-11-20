@@ -16,7 +16,7 @@ function handleErrors(res) {
 }
 
 export function customFetch(url, option) {
-  const prefix = __SERVER__ ? 'http://' + config.apiHost + ':' + config.apiPort : './api';
+  const prefix = __SERVER__ ? 'http://' + config.apiHost + ':' + config.apiPort : '/api';
 
   let opt = option || {};
 
