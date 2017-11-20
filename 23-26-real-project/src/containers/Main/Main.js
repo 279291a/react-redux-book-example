@@ -50,7 +50,7 @@ class Main extends Component {
               )}
 
               {user && (
-                <LinkContainer to='/form'>
+                <LinkContainer to='/forms'>
                   <NavItem eventKey={2}>表单</NavItem>
                 </LinkContainer>
               )}

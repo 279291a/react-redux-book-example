@@ -1,5 +1,5 @@
 import counter from './counter';
-import form from './form';
+import forms from './forms';
 import statistic from './statistic';
 import loadAuth from './loadAuth';
 import login from './login';
@@ -19,6 +19,6 @@ export default app => {
   });
 
   counter(app);
-  form(app);
+  forms(app);
   statistic(app);
 };

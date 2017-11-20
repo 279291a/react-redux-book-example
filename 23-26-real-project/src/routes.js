@@ -31,7 +31,7 @@ export default store => {
       <Route onEnter={requireLogin}>
         <Route path="counter" component={Counter} onEnter={preload(counterPromise)} />
         <Route path="forms" component={Forms} />
-        <Route path="statistics" component={Statistic} onEnter={preload(statisticPromise)} />
+        <Route path="statistic" component={Statistic} onEnter={preload(statisticPromise)} />
       </Route>
       <Route path="login" component={Login} />
       <Route path="*" component={NotFound} status={404} />
