@@ -6,7 +6,7 @@ export function post(data) {
   const option = {
     method: 'post',
     headers: {
-      'Content-type': 'application/json',
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify(data),
   };
@@ -14,7 +14,7 @@ export function post(data) {
   return {
     [ASYNC]: {
       key,
-      promise: () => customFetch('./forms', option),
+      promise: () => customFetch('/forms', option),
     },
   };
 }
